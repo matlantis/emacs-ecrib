@@ -1,11 +1,10 @@
 ;; package tests
-(ert-deftest test-ecrib-read-write-definitions ()
-  (should (let ((definitions '(("a" . "va")
-                               ("c" . "vc")))
-                (filename "temp_file.el"))
-            (progn
-              (ecrib-write-definitions definitions filename)
-              (equal definitions (ecrib-read-definitions filename))))))
+(let ((definitions '(("a" . "va")
+                     ("c" . "vc")))
+      (filename "temp_file.el"))
+  (progn
+    (ecrib-write-definitions definitions filename)
+    (equal definitions (ecrib-read-definitions filename))))
 
 (let ((definitions '(("a" . "va") ("c". "vc")))
       (filename "temp_file.el"))

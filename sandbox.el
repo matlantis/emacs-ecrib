@@ -54,3 +54,9 @@ defs
 
 (setq cribs (ecrib-read-definitions "cribs_definitions.el"))
 (map-keys cribs)
+
+(cdr (assoc "trikstik url" cribs))
+
+(let ((value))
+  (dolist (entry cribs value)
+    (setq value (cons (cons (concat (car entry) " (" (cdr entry) ")") (cdr entry)) value))))
