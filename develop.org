@@ -1,0 +1,13 @@
+* Developing Emacs Crib Sheet
+
+** Features
+*** persistent key-value store in a file
+*** distribution over multiple files
+*** use helm to access the cribs
+*** crib dispatch to choose an action after selection
+** Tasks
+*** write a function that opens a helm buffer with a list of entries
+*** call a function on helm selection
+*** write a function to append an entry to the store variable
+*** write a function to read the cribs from a file
+*** write a function to write the cribs into a file
