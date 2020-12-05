@@ -6,7 +6,6 @@
 *** use helm to access the cribs
 *** +crib dispatch to choose an action after selection+
 ** Tasks
-*** store the cribs in an emacs custom variable
 *** write some interactive functions
 - [ ] add new entry from killring
 - [ ] add new entry interactively
@@ -17,6 +16,8 @@
 - [ ] find-file
 - [ ] open externally
 - [ ] open in webbrowser
+*** DONE store the cribs in an emacs custom variable
+    CLOSED: [2020-12-05 Sa 16:35]
 *** DONE write a function that opens a helm buffer with a list of entries
     CLOSED: [2020-12-05 Sa 15:59]
 *** DONE call a function on helm selection

@@ -29,41 +29,30 @@
 
 (setq ecrib-filepath "cribs_definitions.el")
 
-(defun ecrib-read-default-definitions ()
+(defun ecrib-read-file-definitions ()
   (ecrib-read-definitions ecrib-filepath))
 
+;; as custom variable
+(defcustom ecrib-definitions ()
+  "An alist, where each key is the name of an ecrib definition and value it's value"
+  :type '(alist :key-type string :value-type string))
+
 (defun ecrib-read-definition-keys ()
-  (map-keys (ecrib-read-definitions ecrib-filepath)))
+  (map-keys ecrib-definitions))
 
 (defun ecrib-action-copy-value-to-kill-ring (key)
-  (kill-new (cdr (assoc key (ecrib-read-definitions ecrib-filepath)))))
+  (kill-new (cdr (assoc key ecrib-definitions))))
 
 ;;; Helm stuff
 (defun ecrib-helm-candidates ()
   (let ((value))
-    (dolist (entry (ecrib-read-default-definitions) value)
+    (dolist (entry ecrib-definitions value)
       (setq value (cons (cons (concat (car entry) " (" (cdr entry) ")") (cdr entry)) value)))))
 
 (defun ecrib-helm ()
   (interactive)
   (helm :sources (helm-build-sync-source "helm-ecrib-source"
-                   :candidates (ecrib-read-definition-keys)
-                   :action '(("Copy value to kill-ring" . ecrib-action-copy-value-to-kill-ring)))
-        :buffer "*helm ecrib*"))
-
-(defun ecrib-helm3 ()
-  (interactive)
-  (helm :sources (helm-build-sync-source "helm-ecrib-source"
                    :candidates (ecrib-helm-candidates)
                    :action '(("Copy value to kill-ring" . kill-new))
                    :match-on-real t)
-        :buffer "*helm ecrib*"))
-
-(defclass ecrib-helm-source (helm-source-sync)
-  ((candidates :initform (ecrib-read-definition-keys))
-   (actions '())))
-
-(defun ecrib-helm2 ()
-  (interactive)
-  (helm :sources (helm-make-source "helm-ecrib-source" 'ecrib-helm-source)
         :buffer "*helm ecrib*"))

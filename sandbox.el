@@ -60,3 +60,5 @@ defs
 (let ((value))
   (dolist (entry cribs value)
     (setq value (cons (cons (concat (car entry) " (" (cdr entry) ")") (cdr entry)) value))))
+
+(setq ecrib-definitions (ecrib-read-file-definitions))
