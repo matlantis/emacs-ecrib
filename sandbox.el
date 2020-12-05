@@ -62,3 +62,6 @@ defs
     (setq value (cons (cons (concat (car entry) " (" (cdr entry) ")") (cdr entry)) value))))
 
 (setq ecrib-definitions (ecrib-read-file-definitions))
+
+(assoc-delete-all "bbbb" ecrib-definitions 'string=)
+ecrib-definitions

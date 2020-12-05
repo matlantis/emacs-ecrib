@@ -6,13 +6,15 @@
 *** use helm to access the cribs
 *** +crib dispatch to choose an action after selection+
 ** Tasks
-*** write some interactive functions
+*** TODO create a package
+*** TODO register evil shortcut keys
+*** TODO write some interactive functions
 - [ ] add new entry from killring
-- [ ] add new entry interactively
-*** write some helm actions
-- [ ] delete
-- [ ] edit
-- [ ] insert at point
+- [X] add new entry interactively
+*** TODO write some helm actions
+- [X] delete
+- [X] edit
+- [X] insert at point
 - [ ] find-file
 - [ ] open externally
 - [ ] open in webbrowser
