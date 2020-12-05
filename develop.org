@@ -2,12 +2,28 @@
 
 ** Features
 *** persistent key-value store in a file
-*** distribution over multiple files
+*** +distribution over multiple files+
 *** use helm to access the cribs
-*** crib dispatch to choose an action after selection
+*** +crib dispatch to choose an action after selection+
 ** Tasks
-*** write a function that opens a helm buffer with a list of entries
-*** call a function on helm selection
-*** write a function to append an entry to the store variable
-*** write a function to read the cribs from a file
-*** write a function to write the cribs into a file
+*** store the cribs in an emacs custom variable
+*** write some interactive functions
+- [ ] add new entry from killring
+- [ ] add new entry interactively
+*** write some helm actions
+- [ ] delete
+- [ ] edit
+- [ ] insert at point
+- [ ] find-file
+- [ ] open externally
+- [ ] open in webbrowser
+*** DONE write a function that opens a helm buffer with a list of entries
+    CLOSED: [2020-12-05 Sa 15:59]
+*** DONE call a function on helm selection
+    CLOSED: [2020-12-05 Sa 15:59]
+*** DONE write a function to append an entry to the store variable
+    CLOSED: [2020-12-05 Sa 16:00]
+*** DONE write a function to read the cribs from a file
+    CLOSED: [2020-12-05 Sa 15:59]
+*** DONE write a function to write the cribs into a file
+    CLOSED: [2020-12-05 Sa 16:00]
