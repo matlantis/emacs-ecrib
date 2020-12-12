@@ -4,20 +4,23 @@
 *** persistent key-value store in a file
 *** +distribution over multiple files+
 *** use helm to access the cribs
-*** +crib dispatch to choose an action after selection+
+*** crib dispatch to choose an action after selection
 ** Tasks
-*** TODO create a package
-*** TODO register evil shortcut keys
-*** TODO write some interactive functions
-- [ ] add new entry from killring
+*** TODO write a dispatcher
+*** DONE create a package
+    CLOSED: [2020-12-12 Sa 19:01]
+*** DONE register evil shortcut keys
+    CLOSED: [2020-12-12 Sa 19:01]
+*** DONE write some interactive functions
+    CLOSED: [2020-12-12 Sa 19:03]
 - [X] add new entry interactively
-*** TODO write some helm actions
+*** DONE write some helm actions
+    CLOSED: [2020-12-12 Sa 19:33]
 - [X] delete
 - [X] edit
 - [X] insert at point
-- [ ] find-file
-- [ ] open externally
-- [ ] open in webbrowser
+- [X] find-file
+- [X] open externally
 *** DONE store the cribs in an emacs custom variable
     CLOSED: [2020-12-05 Sa 16:35]
 *** DONE write a function that opens a helm buffer with a list of entries

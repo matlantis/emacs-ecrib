@@ -65,3 +65,6 @@ defs
 
 (assoc-delete-all "bbbb" ecrib-definitions 'string=)
 ecrib-definitions
+(ecrib-read-key-value "a")
+(customize-save-variable 'ecrib-definitions (remove nil ecrib-definitions))
+(ecrib-key-value "teast")
