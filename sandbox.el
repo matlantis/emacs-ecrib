@@ -68,3 +68,29 @@ ecrib-definitions
 (ecrib-read-key-value "a")
 (customize-save-variable 'ecrib-definitions (remove nil ecrib-definitions))
 (ecrib-key-value "teast")
+(magit-dispatch)
+
+(setq text "multi\nline\ntext")
+(cl-search "\n" text)
+(substring text (+ 1 pos))
+
+(defun count-char (text char)
+  "Count char in string"
+  (setq counter 1)
+  (setq pos (cl-search char text))
+  (while (not (eq pos 'nil))
+    (setq counter (+ 1 counter))
+    (setq text (substring text (+ 1 pos)))
+    (setq pos (cl-search "\n" text))
+    text)
+  counter)
+
+(defun count-char-rec (text char)
+  (if (eq 0 (cl-search "\n" text))
+      ))
+
+(count-char "ein\nviel" "\n")
+
+(seq-count (lambda (elt)(eq elt ?\n)) text)
+(car "\n")
+(ecrib-value-oneliner (cons "ein" "test\ntext"))

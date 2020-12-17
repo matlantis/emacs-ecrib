@@ -53,7 +53,7 @@
   (setq defkey (or (car key-val) ""))
   (setq defval (or (cdr key-val) ""))
   (setq key (read-string "New ecrib key: " defkey))
-  (setq value (read-string "New ecrib iii value: " defval))
+  (setq value (read-string "New ecrib value: " defval))
   (cons key value))
 
 ;;;###autoload
@@ -95,10 +95,23 @@
 (defun ecrib-xdg-open (key)
   (browse-url-xdg-open (ecrib-value key)))
 
+(defun ecrib-string-oneliner (value)
+  "Creates a shortened preview of a multiline string"
+  (let ((nlines (seq-count (lambda (elt)(eq elt ?\n)) value)))
+    (if (eq 0 nlines) value
+      (format "%s... (%s more lines)"
+              (substring value 0 (+ 0 (cl-search "\n" value)))
+              nlines))))
+
 (defun ecrib-helm-candidates ()
   (let ((value))
     (dolist (entry ecrib-definitions value)
-      (setq value (cons (cons (concat (car entry) " (" (cdr entry) ")") (car entry)) value)))))
+      (setq value (cons (cons
+                         (format "%s (%s)"
+                                 (car entry)
+                                 (ecrib-string-oneliner (cdr entry)))
+                         (car entry))
+                        value)))))
 
 ;;;###autoload
 (defun ecrib-helm ()

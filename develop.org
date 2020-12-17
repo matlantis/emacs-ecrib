@@ -1,12 +1,16 @@
 * Developing Emacs Crib Sheet
 
 ** Features
-*** persistent key-value store in a file
+*** persistent key-value store +in a file+ as custom variable
 *** +distribution over multiple files+
 *** use helm to access the cribs
 *** crib dispatch to choose an action after selection
 ** Tasks
 *** TODO write a dispatcher
+*** TODO action for duplicate entry
+*** TODO pretty-printed file export and import
+*** DONE multiline support
+    CLOSED: [2020-12-17 Do 18:42]
 *** DONE create a package
     CLOSED: [2020-12-12 Sa 19:01]
 *** DONE register evil shortcut keys
