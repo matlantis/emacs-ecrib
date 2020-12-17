@@ -100,7 +100,7 @@
   (let ((nlines (seq-count (lambda (elt)(eq elt ?\n)) value)))
     (if (eq 0 nlines) value
       (format "%s... (%s more lines)"
-              (substring value 0 (+ 0 (cl-search "\n" value)))
+              (substring value 0 (cl-search "\n" value))
               nlines))))
 
 (defun ecrib-helm-candidates ()
