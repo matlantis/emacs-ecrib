@@ -146,5 +146,28 @@
                    :match-on-real t):buffer
                    "*helm ecrib*"))
 
+;; read cribs from file
+(defun ecrib-helper-read-file-contents (filename)
+  "Return the contents of FILENAME."
+  (with-temp-buffer
+    (insert-file-contents filename)
+    (buffer-string)))
+
+(defun ecrib-helper-eval-string (string)
+  "Evaluate elisp code stored in a string."
+  (eval (car (read-from-string string))))
+
+(defun ecrib-import (filename)
+  "Read the crib definitions from the definition file"
+  (customize-save-variable 'ecrib-definitions
+                           (ecrib-helper-eval-string (ecrib-helper-read-file-contents filename))))
+
+(defun ecrib-export (filename)
+  "Write the crib definitions to the definitions file"
+  (write-region (concat "'"
+                        (prin1-to-string ecrib-definitions))
+                nil
+                filename))
+
 (provide 'ecrib)
 ;;; ecrib.el ends here

@@ -94,3 +94,6 @@ ecrib-definitions
 (seq-count (lambda (elt)(eq elt ?\n)) text)
 (car "\n")
 (ecrib-value-oneliner (cons "ein" "test\ntext"))
+
+(ecrib-export "testecribs.el")
+(ecrib-import "testecribs2.el")
