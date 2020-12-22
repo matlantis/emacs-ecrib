@@ -83,6 +83,13 @@
   (customize-save-variable
    'ecrib-definitions (push new-key-value ecribs)))
 
+(defun ecrib-duplicate (key)
+  "Interactively create a new ecrib from an existing one as template"
+  (setq new-key-value (ecrib-read-key-value (ecrib-key-value key)))
+  (setq ecribs ecrib-definitions)
+  (customize-save-variable
+   'ecrib-definitions (push new-key-value ecribs)))
+
 (defun ecrib-kill-new (key)
   (kill-new (ecrib-value key)))
 
@@ -105,7 +112,12 @@
 
 (defun ecrib-helm-candidates ()
   (let ((value))
-    (dolist (entry ecrib-definitions value)
+    (dolist (entry ecrib-definitions
+                   (sort value
+                         (lambda (a b)
+                           (string<
+                            (downcase (car a))
+                            (downcase (car b))))))
       (setq value (cons (cons
                          (format "%s (%s)"
                                  (car entry)
@@ -123,6 +135,7 @@
                              ("Find file" . ecrib-find-file)
                              ("Open externally" . ecrib-xdg-open)
                              ("Edit" . ecrib-edit)
+                             ("Duplicate" . ecrib-duplicate)
                              ("Delete" . ecrib-delete))
                    :match-on-real t)
         :buffer "*helm ecrib*"))

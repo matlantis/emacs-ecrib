@@ -7,8 +7,11 @@
 *** crib dispatch to choose an action after selection
 ** Tasks
 *** TODO write a dispatcher
-*** TODO action for duplicate entry
 *** TODO pretty-printed file export and import
+*** DONE sort alphabetically
+    CLOSED: [2020-12-22 Di 12:32]
+*** DONE action for duplicate entry
+    CLOSED: [2020-12-22 Di 12:21]
 *** DONE multiline support
     CLOSED: [2020-12-17 Do 18:42]
 *** DONE create a package
