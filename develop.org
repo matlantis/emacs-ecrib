@@ -7,9 +7,10 @@
 *** crib dispatch to choose an action after selection
 ** Tasks
 *** TODO write a dispatcher
-*** TODO pretty-printed file export and import [1/2]
+*** DONE pretty-printed file export and import [2/2]
+    CLOSED: [2020-12-25 Fr 13:29]
 - [X] import/export
-- [ ] pretty print
+- [X] pretty print
 *** DONE sort alphabetically
     CLOSED: [2020-12-22 Di 12:32]
 *** DONE action for duplicate entry

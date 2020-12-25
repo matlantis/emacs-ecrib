@@ -162,10 +162,36 @@
   (customize-save-variable 'ecrib-definitions
                            (ecrib-helper-eval-string (ecrib-helper-read-file-contents filename))))
 
+(defun ecrib-helper-pretty-print-elisp (content)
+  "Format elisp content."
+  (let* ((orig-skip-list srefactor-lisp-symbol-to-skip)
+         (cur-indent-mode indent-tabs-mode)
+         (cur-major-mode major-mode))
+    (progn
+      (setq content (with-temp-buffer
+                      (semantic-default-elisp-setup)
+                      (emacs-lisp-mode)
+                      (setq indent-tabs-mode cur-indent-mode)
+                      (setq srefactor-lisp-symbol-to-skip (srefactor--define-skip-list-for-mode cur-major-mode))
+                      (semantic-lex-init)
+                      (insert content)
+                      (srefactor--lisp-format-one-or-multi-lines (point-min)
+                                                                 (point-max)
+                                                                 (point-min)
+                                                                 'multi-line
+                                                                 nil
+                                                                 t)
+                      (srefactor--appropriate-major-mode cur-major-mode)
+                      (setq srefactor-lisp-symbol-to-skip orig-skip-list)
+                      (indent-region (point-min)
+                                     (point-max))
+                      (buffer-substring-no-properties (point-min)
+                                                      (point-max)))))))
+
 (defun ecrib-export (filename)
   "Write the crib definitions to the definitions file"
-  (write-region (concat "'"
-                        (prin1-to-string ecrib-definitions))
+  (write-region (ecrib-helper-pretty-print-elisp (concat "'"
+                                                         (prin1-to-string ecrib-definitions)))
                 nil
                 filename))
 

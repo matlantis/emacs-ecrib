@@ -96,4 +96,8 @@ ecrib-definitions
 (ecrib-value-oneliner (cons "ein" "test\ntext"))
 
 (ecrib-export "testecribs.el")
-(ecrib-import "testecribs2.el")
+(ecrib-import "testecribs.el")
+
+(pretty-print-elisp (ecrib-helper-read-file-contents "testecribs.el"))
+
+
